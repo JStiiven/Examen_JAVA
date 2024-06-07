@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		ArrayList<String> productoInventario;
+		ArrayList<Integer> cantidadProducto;
+		
+		String nombreProducto ="";
+		int cantInicialProducto=0;
+		int menuP=0;
+		
+		do {
+			String menu = "Menu de opciones!\n";
+			menu+="\n1. Agregar pruducto";
+			menu+="\n2. Buscar Producto por nombre";
+			menu+="\n3. Eliminar producto";
+			menu+="\n4. Mostrar inventario";
+			menu+="\n5. Salir";
+			
+			menuP=Integer.parseInt(JOptionPane.showInputDialog(menu));
+			
+			switch (menuP) {
+			case 1:
+				productoInventario = new ArrayList<String>();
+				cantidadProducto = new ArrayList<Integer>();
+				
+				nombreProducto=JOptionPane.showInputDialog("Ingrese el nombre del producto");
+				
+				productoInventario.add(nombreProducto);
+				
+				cantInicialProducto=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad inicial"));
+				cantidadProducto.add(cantInicialProducto);
+				
+				break;
+			case 2:
+				productoInventario = new ArrayList<String>();
+				nombreProducto=JOptionPane.showInputDialog("Ingrese el nombre del producto que desea buscar");
+				
+				if (productoInventario.contains(nombreProducto)) {
+					System.out.println(productoInventario);
+					System.out.println(nombreProducto);
+					System.out.println("si esta");
+				} else {
+					System.out.println();
+				}
+				
+				break;
+			default:
+				break;
+			}
+		} while (menuP != 5);
+	}
+
+}

@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		ArrayList<String> productoInventario = new ArrayList<String>();
+		ArrayList<Integer> cantidadProducto = new ArrayList<Integer>();
+		
+		String nombreProducto ="";
+		int cantInicialProducto=0, actualizarCant=0;
+		int menuP=0;
+		
+		do {
+			String menu = "Menu de opciones!\n";
+			menu+="\n1. Agregar pruducto";
+			menu+="\n2. Buscar Producto por nombre";
+			menu+="\n3. Actualizar cantidad de producto";
+			menu+="\n4. Eliminar producto";
+			menu+="\n5. Mostrar inventario";
+			menu+="\n6. Salir";
+			
+			menuP=Integer.parseInt(JOptionPane.showInputDialog(menu));
+			
+			switch (menuP) {
+			case 1:
+				
+				nombreProducto=JOptionPane.showInputDialog("Ingrese el nombre del producto");
+				
+				productoInventario.add(nombreProducto);
+				
+				cantInicialProducto=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad inicial"));
+				cantidadProducto.add(cantInicialProducto);
+				
+				break;
+			case 2:
+				nombreProducto=JOptionPane.showInputDialog("Ingrese el nombre del producto que desea buscar");
+				
+				if (productoInventario.contains(nombreProducto)) {
+					for (int i = 0; i < productoInventario.size(); i++) {
+						if (productoInventario.contains(nombreProducto)) {
+							JOptionPane.showMessageDialog(null, "El producto "+nombreProducto+ " esta!");
+						}
+					}
+				} else {
+					System.out.println("No existe el producto "+nombreProducto);
+				}
+				break;
+			case 3:
+				nombreProducto=JOptionPane.showInputDialog("Ingrese el nombre del producto que desea actualizar");
+				actualizarCant=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad del producto"));
+				
+				cantidadProducto.add(actualizarCant);
+				
+				JOptionPane.showMessageDialog(null, "Producto actualizado!\n"+nombreProducto +" y su nueva cantidad: "+actualizarCant);
+				break;
+			case 4:
+				nombreProducto=JOptionPane.showInputDialog("Ingrese el nombre del producto que desea eliminar");
+				System.out.println(productoInventario);
+				productoInventario.remove(nombreProducto);
+				System.out.println(productoInventario);
+				break;
+			case 5:
+				JOptionPane.showMessageDialog(null, "El inventario:\n\n"+productoInventario+"\n"+cantidadProducto);
+				break;
+			case 6:
+				JOptionPane.showMessageDialog(null, "Saliendo...");
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Error!"+ "!!!", menu, JOptionPane.WARNING_MESSAGE);
+				break;
+			}
+		} while (menuP != 6);
+	}
+
+}
